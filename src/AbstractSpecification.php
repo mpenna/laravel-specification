@@ -1,4 +1,5 @@
 <?php
+
 namespace Chalcedonyt\Specification;
 
 /**
@@ -13,10 +14,11 @@ abstract class AbstractSpecification implements SpecificationInterface
      *
      * @return SpecificationInterface or null
      */
-
-    function remainderUnsatisfiedBy( $candidate ){
-        if( !$this -> isSatisfiedBy( $candidate ))
+    function remainderUnsatisfiedBy($candidate)
+    {
+        if (!$this->isSatisfiedBy($candidate)) {
             return $this;
+        }
         return null;
     }
 

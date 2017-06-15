@@ -1,4 +1,5 @@
 <?php
+
 namespace Chalcedonyt\Specification;
 
 /**
@@ -6,7 +7,9 @@ namespace Chalcedonyt\Specification;
  */
 class NotSpec extends AbstractSpecification
 {
-
+    /**
+     * @var SpecificationInterface $spec
+     */
     protected $spec;
 
     /**
@@ -31,10 +34,17 @@ class NotSpec extends AbstractSpecification
         return !$this->spec->isSatisfiedBy($candidate);
     }
 
-    public function remainderUnsatisfiedBy( $candidate )
+    /**
+     * Returns the unfulfilled specification.
+     *
+     * @param Item $candidate
+     *
+     * @return mixed
+     */
+    public function remainderUnsatisfiedBy($candidate)
     {
-        if( $this -> spec -> isSatisfiedBy( $candidate ) ){
-            return $this -> spec;
+        if ($this->spec->isSatisfiedBy($candidate)) {
+            return $this->spec;
         }
         return null;
     }

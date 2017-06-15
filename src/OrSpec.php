@@ -1,4 +1,5 @@
 <?php
+
 namespace Chalcedonyt\Specification;
 
 /**
@@ -24,15 +25,13 @@ class OrSpec extends CompositeSpecification
      */
     public function __construct(SpecificationInterface $left = null, SpecificationInterface $right = null)
     {
-        if( $left )
-        {
-            $this -> left = $left;
-            $this -> specifications[]= $left;
+        if ($left) {
+            $this->left = $left;
+            $this->specifications[] = $left;
         }
-        if( $right )
-        {
-            $this -> right = $right;
-            $this -> specifications[]= $right;
+        if ($right) {
+            $this->right = $right;
+            $this->specifications[] = $right;
         }
     }
 
@@ -45,12 +44,11 @@ class OrSpec extends CompositeSpecification
      */
     public function isSatisfiedBy($candidate)
     {
-        foreach( $this -> specifications as $specification )
-        {
-            if( $specification -> isSatisfiedBy( $candidate ))
+        foreach ($this->specifications as $specification) {
+            if ($specification->isSatisfiedBy($candidate)) {
                 return true;
+            }
         }
         return false;
     }
 }
-?>

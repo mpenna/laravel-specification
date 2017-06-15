@@ -1,4 +1,5 @@
 <?php
+
 namespace Chalcedonyt\Specification;
 
 /**
@@ -20,19 +21,18 @@ class AndSpec extends CompositeSpecification
      * Creation of a logical AND of unlimited specifications
      *
      * @param SpecificationInterface $left
+     *
      * @param SpecificationInterface $right
      */
     public function __construct(SpecificationInterface $left = null, SpecificationInterface $right = null)
     {
-        if( $left )
-        {
-            $this -> left = $left;
-            $this -> specifications[]= $left;
+        if ($left) {
+            $this->left = $left;
+            $this->specifications[] = $left;
         }
-        if( $right )
-        {
-            $this -> right = $right;
-            $this -> specifications[]= $right;
+        if ($right) {
+            $this->right = $right;
+            $this->specifications[] = $right;
         }
     }
 
@@ -45,10 +45,10 @@ class AndSpec extends CompositeSpecification
      */
     public function isSatisfiedBy($candidate)
     {
-        foreach( $this -> specifications as $specification )
-        {
-            if( !$specification -> isSatisfiedBy( $candidate ))
+        foreach ($this->specifications as $specification) {
+            if (!$specification->isSatisfiedBy($candidate)) {
                 return false;
+            }
         }
         return true;
     }
