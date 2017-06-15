@@ -82,7 +82,7 @@ class SpecificationGeneratorCommand extends Command
             $namespace = $this->config->get('specification.namespace');
             $directory = $this->appPath($this->config->get('specification.directory'));
 
-            //retrieves store directory configuration
+            // retrieves store directory configuration
             if (strpos($classname, '\\') !== false) {
                 $class_dirs = substr($classname, 0, strrpos($classname, '\\'));
                 $directory = $directory . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $class_dirs);
@@ -117,10 +117,16 @@ class SpecificationGeneratorCommand extends Command
                             $parts = explode("\\", $parameter);
                             return end($parts);
                         };
-                        $parameter_class = $parameter;
-                        $parameter_name = strtolower($derive_variable_name());
+                        $class = $derive_variable_name();
+                        $parameter_class = $class;
+                        $parameter_name = lcfirst($class);
                     }
-                    $parameters->push(['class' => $parameter_class, 'name' => $parameter_name]);
+
+                    $parameters->push([
+                        'use' => $parameter,
+                        'class' => $parameter_class,
+                        'name' => $parameter_name
+                    ]);
                 }
 
                 if ($parameters->count()) {
