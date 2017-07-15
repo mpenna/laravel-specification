@@ -17,7 +17,7 @@
         "phpunit/phpunit": "4.*"
     },
     "replace": {
-        "chalcedonyt/laravel-specification": "^1.*"
+        "chalcedonyt/laravel-specification": "1.*"
     },
     "autoload": {
         "psr-4": {
@@ -31,5 +31,6 @@
         "branch-alias": {
             "dev-master": "0.x-dev"
         }
-    }
+    },
+    "minimum-stability": "stable"
 }
